@@ -6,8 +6,6 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE, echo=FALSE, message = FALSE, eval=false}
-
-
 # rm(list=ls()) 
 # cat("\f")
 # # cat("\014")
@@ -19,18 +17,38 @@ library(dplyr)
 
 ```
 
-Cleaning and reading  data file into R. 
+Cleaning and reading data file into R. 
 ```{r}
 
 daydata <- read_csv("accel_data.csv")
 # View(daydata)
-
 daydata_clean = daydata %>% 
   janitor::clean_names()
-
 # View(daydata_clean)
+```
 
+
+```{r}
+
+daydata_clean %>% 
+  pivot_longer(
+    activity_1:activity_1440, names_to = "Activity Level", values_to = "Acceleration") %>% write_csv(file = "see_pivot_longer.csv")
 
 ```
 
+```{r}
+daydata_clean %>% 
+  pivot_longer(
+    activity_1:activity_1440, names_to = "Activity Level", values_to = "Acceleration") %>% mutate(Weekday_Weekend = as.factor(day)) %>% recode(Weekday_Weekend, Weekday =   )                                
+                                  
+```
+
+
+```{r}
+head(daydata_clean)
+
+me = as.factor(daydata_clean$day)
+head(me)
+
+```
 
