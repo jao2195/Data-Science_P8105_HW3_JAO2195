@@ -1,0 +1,36 @@
+---
+title: "Homework 3"
+author: "Jennifer Osei (jao2195)"
+date: "October 12, 2022"
+output: github_document
+---
+
+```{r setup, include=FALSE, echo=FALSE, message = FALSE, eval=false}
+
+
+# rm(list=ls()) 
+# cat("\f")
+# # cat("\014")
+
+library(readr)
+library(readxl)
+library(tidyverse)
+library(dplyr)
+
+```
+
+Cleaning and reading  data file into R. 
+```{r}
+
+daydata <- read_csv("accel_data.csv")
+# View(daydata)
+
+daydata_clean = daydata %>% 
+  janitor::clean_names()
+
+# View(daydata_clean)
+
+
+```
+
+
